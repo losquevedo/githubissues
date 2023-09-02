@@ -1,8 +1,8 @@
 # Github Issues Script #
 This script was written in order to do the following with the GitHub Issues API:
 
-1. Access the given Github repo using a given Github Access Token and tally the open issues and pull requests
-2. If a label is given as an optional search parameter, filter the results by that label
+1. Access a given Github repo using a Github Access Token and tally the open issues and pull requests
+2. If a label is given as an optional search parameter, filter the results by that label for both issues and pull requests
 
 ## Installation ##
 1. Clone the repo
@@ -12,7 +12,7 @@ This script was written in order to do the following with the GitHub Issues API:
         `node script_name.js YOUR_GITHUB_TOKEN ownerName repoName "labelName"`
 
 ### Example ###
-    If you wanted to check for issues in the `facebook/react` repo with the "Component: Developer Tools" label, you'd run:
+If you wanted to check for issues in the `facebook/react` repo with the "Component: Developer Tools" label, you'd run:
     `node issuesScript.js YOUR_GITHUB_TOKEN facebook react "Component: Developer Tools"`
 
 ## Considerations ##
@@ -44,7 +44,7 @@ In this case, an environment variable would be used to determine what kind of en
 ```
 let response;
 if (process.env.NODE_ENV === 'test') {
-  response = /* mock data */;
+  response = /* mock request data */;
 } else {
   response = axios.get(/* ... */);
 }
@@ -57,12 +57,12 @@ This would make it so that functions and other mock configurations could be inse
 
 ```
 function fetchData(httpLib[Such as Axios]) {
-  return httpLib.get(/* ... */);
+  return httpLib.get(/* mock request data */);
 }
 
 // For testing
 fetchData({ get: () => Promise.resolve(/* mock data */) });
 ```
 
-I could see this making things hard to debug since compile time errors would be pushed to runtime but I can experiment with that come test time. It might be overly complex for this desired functionality too but that could just be me.
+I could see this making things hard to debug since compile time errors would be pushed to runtime but I could be wrong and would definitely experiment with this approach some if I needed to implement it. It might be overly complex for this desired functionality too but that could just be me.
 
