@@ -13,7 +13,7 @@ This script was written in order to do the following with the GitHub Issues API:
 
 ### Example ###
     If you wanted to check for issues in the `facebook/react` repo with the "Component: Developer Tools" label, you'd run:
-    `node issuesScript.js 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 facebook react "Component: Developer Tools"`
+    `node issuesScript.js YOUR_GITHUB_TOKEN facebook react "Component: Developer Tools"`
 
 ## Considerations ##
 1. The script uses pagination in order to fetch 100 issues per request and increments the `page` variable for every iteration
